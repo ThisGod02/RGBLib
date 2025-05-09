@@ -10,35 +10,35 @@ private:
     int _red, _green, _blue, _alpha;
     static const std::map<std::string, color> _rgb;
 
-    // Приватные сеттеры для валидации
+    // РЎРµС‚С‚РµСЂС‹
     void setRed(int r);
     void setGreen(int g);
     void setBlue(int b);
     void setAlpha(int a);
 
-    // Вспомогательная функция для преобразования в HEX
+    // Р”РѕРї С„СѓРЅРєС†РёСЏ РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ HEX
     std::string toHex(int value) const;
 
 public:
-    // Конструкторы
+    // РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂС‹
     color(int r, int g, int b);
     color(int r, int g, int b, int a);
     color(const std::string& name);
 
-    // Геттеры
+    // Р“РµС‚С‚РµСЂС‹
     int getRed() const { return _red; }
     int getGreen() const { return _green; }
     int getBlue() const { return _blue; }
     int getAlpha() const { return _alpha; }
 
-    // Строковые представления
+    // РЎС‚СЂРѕРєРѕРІС‹Рµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ
     std::string toRGB() const;
     std::string toRGBA() const;
     std::string toHex() const;
 
-    // Перегрузка оператора / для смешивания цветов
+    // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° / РґР»СЏ СЃРјРµС€РёРІР°РЅРёСЏ С†РІРµС‚РѕРІ
     color operator/(const color& other) const;
 
-    // Перегрузка оператора << для вывода цвета
+    // РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° << РґР»СЏ РІС‹РІРѕРґР° С†РІРµС‚Р°
     friend std::ostream& operator<<(std::ostream& os, const color& c);
 };
