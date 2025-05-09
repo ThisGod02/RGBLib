@@ -1,6 +1,6 @@
 #include "color.h"
 
-// Инициализация статической карты цветов
+// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‚Р°С‚РёС‡РµСЃРєРѕР№ РєР°СЂС‚С‹ С†РІРµС‚РѕРІ
 const std::map<std::string, color> color::_rgb = {
     {"black", color(0, 0, 0)},
     {"silver", color(192, 192, 192)},
@@ -20,14 +20,14 @@ const std::map<std::string, color> color::_rgb = {
     {"aqua", color(0, 255, 255)}
 };
 
-// Конструктор для RGB
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ RGB
 color::color(int r, int g, int b) : _red(0), _green(0), _blue(0), _alpha(255) {
     setRed(r);
     setGreen(g);
     setBlue(b);
 }
 
-// Конструктор для RGBA
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ RGBA
 color::color(int r, int g, int b, int a) : _red(0), _green(0), _blue(0), _alpha(255) {
     setRed(r);
     setGreen(g);
@@ -35,7 +35,7 @@ color::color(int r, int g, int b, int a) : _red(0), _green(0), _blue(0), _alpha(
     setAlpha(a);
 }
 
-// Конструктор по имени цвета
+// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ РёРјРµРЅРё С†РІРµС‚Р°
 color::color(const std::string& name) : _red(0), _green(0), _blue(0), _alpha(255) {
     auto it = _rgb.find(name);
     if (it != _rgb.end()) {
@@ -49,7 +49,7 @@ color::color(const std::string& name) : _red(0), _green(0), _blue(0), _alpha(255
     }
 }
 
-// Приватные сеттеры с валидацией
+// РЎРµС‚С‚РµСЂС‹
 void color::setRed(int r) {
     _red = (r < 0) ? 0 : (r > 255) ? 255 : r;
 }
@@ -65,31 +65,30 @@ void color::setBlue(int b) {
 void color::setAlpha(int a) {
     _alpha = (a < 0) ? 0 : (a > 255) ? 255 : a;
 }
-
-// Преобразование в строку RGB
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ СЃС‚СЂРѕРєСѓ RGB
 std::string color::toRGB() const {
     return "RGB(" + std::to_string(_red) + "," + std::to_string(_green) + "," + std::to_string(_blue) + ")";
 }
 
-// Преобразование в строку RGBA
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ СЃС‚СЂРѕРєСѓ RGBA
 std::string color::toRGBA() const {
     return "RGBA(" + std::to_string(_red) + "," + std::to_string(_green) + "," +
         std::to_string(_blue) + "," + std::to_string(_alpha) + ")";
 }
 
-// Преобразование в HEX
+// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІ HEX
 std::string color::toHex() const {
     return "#" + toHex(_red) + toHex(_green) + toHex(_blue);
 }
 
-// Вспомогательная функция для HEX
+// Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ HEX
 std::string color::toHex(int value) const {
     std::stringstream ss;
     ss << std::hex << std::setw(2) << std::setfill('0') << value;
     return ss.str();
 }
 
-// Оператор смешивания цветов
+// РћРїРµСЂР°С‚РѕСЂ СЃРјРµС€РёРІР°РЅРёСЏ С†РІРµС‚РѕРІ
 color color::operator/(const color& other) const {
     int newRed = (_red + other._red) / 2;
     int newGreen = (_green + other._green) / 2;
@@ -98,7 +97,7 @@ color color::operator/(const color& other) const {
     return color(newRed, newGreen, newBlue, newAlpha);
 }
 
-// Перегрузка оператора вывода
+// РџРµСЂРµРіСЂСѓР·РєР° РѕРїРµСЂР°С‚РѕСЂР° РІС‹РІРѕРґР°
 std::ostream& operator<<(std::ostream& os, const color& c) {
     os << c.toRGBA();
     return os;
